@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body{
+  /* background: url(../image/mc\ ad.jpg) no-repeat center center/cover; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  border: border-box;
+  background-color: rgb(182, 179, 231);
+}
+.spesification-container{
+  display: flex;
+  background: transparent;
+  padding: 20px;
+  box-shadow: 0 2px 3px  5px rgb(92, 87, 87);
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  width: 100vw;
+  max-width: 800px;
+  margin: 50px;
+}
+button{
+  cursor: pointer;
+}
+.spesification input{
+  width: 80px;
+  height: 30px;
+  margin-left: 30px;
+}
+.spesification select{
+  font-size: 1.05rem;
+  font-weight: lighter;
+  cursor: pointer;
+  background-color: rgba(95, 93, 93, 0.219);
+}
+.spesification h1{
+  color: rgb(255, 115, 0);
+  border-bottom: 2px dashed black;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+.spesification h3{
+  margin: 10px;
+}
+img{
+  align-items: right;
+}
+.tabel{
+  font-size: 1.2rem;
+}
+.tabel th{
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+  color: rgb(12, 12, 56);
+}
+.spesification select{
+  height: 40px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  color: rgb(36, 36, 184);
+}
+.dir-btn{
+  font-size: 1.1rem;
+  border: none;
+  width: 100px;
+  height: 60px;
+  margin: 5px;
+  padding: 5px;
+  background-color: rgb(255, 115, 0);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.dir-btn:hover{
+  opacity: 0.8;
+  color: white;
+  background-color: #000000;
+} 
+.check-btn{
+  width: 80px;
+  color: white;
+  height: 30px;
+  background-color: rgb(38, 38, 235);
+  border: none;
+  border-radius: 7px;
+  margin:50px 10px;
+  font-size: 1.1rem;
+  align-items: end;
+  transition: 0.3s;
+}
+.check-btn:hover{
+  border: 2px solid rgb(38, 38, 235);
+  background-color: white;
+  color:rgb(38, 38, 235);
+}
+.next-btn{
+  display: flex;
+  justify-content:right ;
+}
+.type, .color, .area, .area-direction{
+  display: none;
+}
+#vertical{
+  margin-left: 120px;
+}
+.result, .refresh{
+  display: flex;
+  width: 90px;
+  color: rgb(255, 255, 255);
+  height: 50px;
+  background-color: rgb(38, 38, 235);
+  border: none;
+  border-radius: 7px;
+  margin-top: 10px;
+  font-size: 1.03rem;
+  align-items: center;
+  transition: 0.3s;
+}
+.result:hover{
+  border: 2px solid rgb(143, 69, 9);
+  background-color: white;
+  color:rgb(38, 38, 235);
+}
+.result-btn{
+  display: none;
+  width: 80px;
+  color: white;
+  height: 80px;
+  background-color: rgb(9, 9, 61);
+  border: none;
+  border-radius: 7px;
+  margin-left: 50px;
+  font-size: 1.3rem;
+  transition: 0.6s;
+}
+.result-btn:hover{
+  border: 1px solid rgb(143, 69, 9);
+  background-color: white;
+  color:rgb(38, 38, 235);
+}
+.ads{
+  color: rgb(48, 24, 185);
+  margin: 0px 10px;
+}
+.refresh{
+  margin: 100px 10px;
+}
+  </style>
+  <title>Select tile adhesive</title>
+</head>
+<body>    
+      <div class="spesification-container" id="spesification-container" >
+        
+         <div class="spesification size">
+         
+          <h1>Tile Size (cm)</h1>
+          <div class="spec-container">
+            <div id="spesification-container">
+              <div class="tile-width">
+                <h2>Tile Width</h2>
+                <input name="tile-width" id="tile-width" type="number" min="10" max="120" placeholder="10-120cm">
+              </div>
+
+              <div class="tile-length">
+                <h2>Tile Length</h2>
+                <input name="tile-length" id="tile-length" type="number" min="10" max="120" placeholder="10-120cm">
+              </div>
+              <h2 id="area-result" style="color:rgb(26, 26, 59)"></h2>
+              
+              <div class="thikness">
+              <h2>Tile Thickness</h2>
+              <select name="thickness" id="tile-thickness">
+                <option value="0.5">0.5</option>
+                <option value="0.6-1">0.6-1</option>
+              </select>
+              <div class="next-btn">
+                <button id="size-btn" class="check-btn">Next</button>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="spesification type">
+          <h1>Tile Type</h1>
+          <div class="specifcation-container">
+            <select name="tile-type-ceramic" id="tile-type-ceramic">
+              <option value="Local Ceramic">Local ceramic</option>
+              <option value="Imported ceramic">Imported ceramic
+              </option> 
+              <option value="Local porcelain">Local porcelain 
+              </option>
+              <option value="Imported porcelain">Imported porcelain 
+              </option>
+            </select>
+            <div class="next-btn">
+              <button class="check-btn" id="type-back">Back</button>
+              <button id="type-btn" class="check-btn ">Next</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="spesification color">
+          <h1>Color</h1>
+          <div class="specifcation-container">
+            <select name="tile-color" id="tile-color">
+              <option value="Ceramic Near white">Ceramic Near white
+              </option>
+              <option value="Ceramic Near black">Ceramic Near black
+              </option>
+              <option value="Porcelain Near white">Porcelain Near white
+              </option>
+              <option value="Porcelain Near black">Porcelain Near black
+              </option>
+            </select>
+            <div class="next-btn">
+              <button class="check-btn" id="color-back">Back</button>
+              <button id="color-btn" class="check-btn">Next</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="spesification area">
+          <h1>Application area</h1>
+            <h3 id="test-result">Exposure to water</h3>
+            <select name="exposure-to-water" id="exposure-to-water">
+              <option value="Dry room">Dry room</option>
+              <option value="Wet room">Wet room</option>
+              <option value="Swimming pool">Swimming pool</option>
+            </select>
+            <div class="next-btn">
+              <button class="check-btn" id="area-back">Back</button>
+              <button id="area-btn" class="check-btn">Next</button>
+            </div>
+        </div>    
+
+        <div class="spesification area-direction">    
+            <div id="application-area" class="application-area">
+              <h1>Application area direction</h1>
+             
+              <!-- <button id="vertical-btn" class="dir-btn">Vertical</button><br> -->
+              <select name="horizontal" id="direction">
+                <option value="Vertical In House">Vertical In house</option>
+                <option value="Vertical Outside">Vertical Outside</option>
+                <option value="Horizontal In House">Horizontal In house</option>
+                <option value="Horizontal Outside">Horizontal Outside</option>
+              </select>
+            </div>
+            <div class="next-btn">
+              <button class="check-btn" id="direction-back">Back</button>
+              <button id="result-viewer" class="check-btn">Next</button>
+            </div>
+          </div>
+        </div>
+        <script>
+          const adhesives = [
+    {
+    oname: 'M16 Gray',
+    omaxLength: 40,
+    otileArea: 2400,
+    otileThickness:['0.5'],
+    otileType: ['Local Ceramic'],
+    otileColor: ['Ceramic Near black'],
+    oexposureToWater: ['Dry room'],
+    odirection: ['Horizontal In House']
+    },{
+    oname: 'M18 Gray',
+    omaxLength: 60,
+    otileArea: 3600,
+    otileThickness:['0.5'],
+    otileType: ['Local Ceramic'],
+    otileColor: ['Ceramic Near black'],
+    oexposureToWater: ['Dry room', 'Wet room'],
+    odirection: ['Vertical In House', 'Horizontal In House']
+    },{
+    oname:'M18 White',
+    omaxLength: 60,
+    otileArea: 3600,
+    otileThickness: ['0.5'],
+    otileType: ['Local Ceramic'],
+    otileColor: ['Ceramic Near white', 'Ceramic Near black'],
+    oexposureToWater: ['Dry room', 'Wet room'],
+    odirection: ['Vertical In House', 'Horizontal In House']
+},{
+    oname:'M20 Gray',
+    omaxLength: 120,
+    otileArea: 9600,
+    otileThickness: ['0.5','0.6-1'],
+    otileType:["Local Ceramic", "Imported ceramic", "Local porcelain"],
+    otileColor: ['Ceramic Near black', 'Porcelain Near white', 'Porcelain Near black'],
+    oexposureToWater: ['Dry room', 'Wet room'],
+    odirection:['Vertical In House', 'Vertical Outside', 'Horizontal In House', 'Horizontal Outside'
+    ]
+},{
+    oname:'M20 White',
+    omaxLength: 120,
+    otileArea: 9600,
+    otileThickness: ['0.5','0.6-1'],
+    otileType:["Local Ceramic", "Imported ceramic", "Local porcelain"],
+    otileColor: ["Ceramic Near white", 'Ceramic Near black', 'Porcelain Near white', 'Porcelain Near black'],
+    oexposureToWater: ['Dry room', 'Wet room'],
+    odirection: ['Vertical In House', 'Vertical Outside', 'Horizontal In House', 'Horizontal Outside']
+},{
+    oname:'M21 Gray',
+    omaxLength: 120,
+    otileArea: 14400,
+    otileThickness: ['0.5','0.6-1'],
+    otileType: [ "Local Ceramic", "Imported ceramic", "Local Porcelain", "Imported porcelain"],
+    otileColor: ['Ceramic Near black', 'Porcelain Near white', 'Porcelain Near black'],
+    oexposureToWater: ['Dry room', 'Wet room', "Swimming pool"],
+    odirection: ['', 'Vertical In House', 'Vertical Outside', 'Horizontal In House', 'Horizontal Outside']
+},{
+    oname:'M-800 White',
+    omaxLength: 120,
+    otileArea: 14400,
+    otileThickness: ['0.5','0.6-1'],
+    otileType: [ "Local Ceramic", "Imported ceramic", "Local Porcelain", "Imported porcelain"],
+    otileColor: ["Ceramic Near white", 'Ceramic Near black', 'Porcelain Near white', 'Porcelain Near black'],
+    oexposureToWater: ['Dry room', 'Wet room', "Swimming pool"],
+    odirection: [ '', 'Vertical In House', 'Vertical Outside', 'Horizontal In House', 'Horizontal Outside']
+}]
+
+
+  //.............VARIABELS FOR BUTTONS...........
+const checkBtn = document.getElementById('check-btn');
+const resultViewerbtn = document.getElementById('result-viewer')
+const verticalBtn = document.getElementById('vertical-btn');
+const sizeBtn = document.getElementById('size-btn');
+const typeBtn = document.getElementById('type-btn');
+const colorBtn = document.getElementById('color-btn');
+const areaBtn = document.getElementById('area-btn');
+const calcBtn = document.getElementById('calulate')
+const finalResult = document.getElementById('result-btn')
+const typeBack = document.getElementById('type-back')
+const colorBack = document.getElementById('color-back')
+const areaBack = document.getElementById('area-back')
+const directionBack = document.getElementById('direction-back')
+//------------variabels for designe
+const size = document.querySelector('.size');
+const type = document.querySelector('.type');
+const color = document.querySelector('.color');
+const area = document.querySelector('.area');
+const areaDirection = document.querySelector('.area-direction');
+//.............VARIABELS FOR SELECTED ...........
+const tileWidth = document.getElementById('tile-width')
+const tileLength = document.getElementById('tile-length')
+const tileThickness = document.getElementById('tile-thickness')
+const tileType = document.getElementById('tile-type-ceramic')
+const tileColor = document.getElementById('tile-color')
+const exposureToWater = document.getElementById('exposure-to-water')
+const direction = document.getElementById('direction')
+const vertical = document.getElementById('vertical')
+const applicationArea = document.getElementById('application-area')
+const resultViewer = document.getElementById('spesification-container')
+const areaResult = document.getElementById('area-result')
+let tilewidthValue = 0
+let tileLengthValue = 0
+//---------FUNCTION-------------
+let tileAreaRes = 0;
+function areaCalculate(){
+  tileAreaRes = tileLength.value * tileWidth.value
+}
+sizeBtn.addEventListener('click', function(){
+  areaCalculate();
+  if(tileWidth.value > 9 && tileWidth.value  < 121 &&
+    tileLength.value > 9 && tileLength.value < 121){
+    tilewidthValue = tileWidth.value
+    tileLengthValue = tileLength.value
+    if(tileAreaRes !== 0){
+      type.style.display = 'block'
+      size.style.display= 'none'
+      tileLength.value = ''
+      tileWidth.value = ''
+     }}else{
+    areaResult.innerHTML = "<p  style=' font-size:14px; color:red'> Insert width and length from 10 to 120cm</p>"
+  }  
+})
+typeBtn.addEventListener('click', function(){
+  color.style.display = 'block'
+  type.style.display= 'none'
+})
+typeBack.addEventListener('click', function(){
+  type.style.display = 'none'
+  size.style.display= 'block'
+  areaResult.innerHTML = ''
+})
+colorBtn.addEventListener('click', function(){
+  area.style.display = 'block'
+  color.style.display= 'none'
+})
+colorBack.addEventListener('click', function(){
+  type.style.display = 'block'
+  color.style.display= 'none'
+})
+let dirValue = direction.value
+areaBtn.addEventListener('click', function (){
+      if(exposureToWater.value.includes('Swimming pool')){
+        direction.value = ''
+        finalResultShow()
+      }else{
+        area.style.display = 'none'
+        areaDirection.style.display = 'block'
+      }})
+areaBack.addEventListener('click', function (){
+  area.style.display = 'none'
+  color.style.display= 'block'
+})
+resultViewerbtn.addEventListener('click', finalResultShow)
+directionBack.addEventListener('click', function (){
+  area.style.display = 'block'
+  areaDirection.style.display = 'none'
+})
+//-------------result functions---------
+function finalResultShow(){
+  resultViewer.innerHTML = `<div class="spesification">
+   <h1>You selected</h1>
+   <table class="tabel">
+    <tr> <th>Area</th> <td>${tileAreaRes}</td>< /tr>
+    <tr> <th>Thickness</th> <td>${tileThickness.value}</td> </tr>
+    <tr> <th>Tile Type</th> <td>${tileType.value}</td> </tr>
+    <tr> <th>Color</th> <td>${tileColor.value}</td> </tr>
+    <tr> <th>Exposure to water</th> <td>${exposureToWater.value}</td> </tr>
+    <tr> <th>Application area direction</th> <td>${direction.value}</td> </tr>
+  </table> 
+  <button class="check-btn" onclick="product()">Select</button>
+  <h3 id='final-product'></h3>
+  </div> 
+  `}
+function refresh(){
+  location.reload();
+}
+const finalProduct = document.getElementById('final-product')
+  function product(){
+      let selected = adhesives
+        .filter(adhesive => 
+          tileLengthValue <= adhesive.omaxLength &&
+          tilewidthValue <= adhesive.omaxLength &&
+          tileAreaRes <= adhesive.otileArea &&
+          adhesive.otileThickness.includes(tileThickness.value) &&
+          adhesive.otileType.includes(tileType.value) &&
+          adhesive.otileColor.includes(tileColor.value) &&
+          adhesive.oexposureToWater.includes(exposureToWater.value) &&
+          adhesive.odirection.includes(direction.value))
+        .map(adhesive => adhesive.oname);
+       if (selected.length > 1) {
+        resultViewer.innerHTML = ` 
+        <h3> You can use <h4 class="ads"> ${selected.slice(0, 1)} </h4>  <h4>or</h4>  <h4 class="ads"> ${selected.slice(1, 2)} </h4> <br> 
+        <button class = 'refresh'; onclick = refresh() >Check again</button>
+        `;
+      }else if(selected.length === 1){
+        resultViewer.innerHTML = `Only ${selected.slice(0, 1)}
+        <button class = 'refresh'; onclick = refresh() >Check again</button>`
+      } else {
+        resultViewer.innerHTML = `No suitable adhesive found. 
+        <button class = 'refresh'; onclick = refresh() >Check again</button>`;
+      }
+    }
+        </script>
+</body>
+</html>
+
